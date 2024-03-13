@@ -21,22 +21,10 @@ with st.container():
     columnContainer.header("Assoc. Prof. Dr. Cenk Serhan Özverel")
 
     columnContainer = col2.container(border = True)
-    columnContainer.image("pages/images/eda.jpg", width=None)
-    columnContainer.header("Assoc. Prof. Dr. Eda Becer")
-
-    columnContainer = col1.container(border = True)
-    columnContainer.image("pages/images/default.png", width=None)
-    columnContainer.header("Assoc. Prof. Dr. Burcu Yüksel")
-
-    columnContainer = col2.container(border = True)
-    columnContainer.image("pages/images/default.png", width=None)
-    columnContainer.header("Res. Assit. Nadire Kıyak")
-
-    columnContainer = col1.container(border = True)
     columnContainer.image("pages/images/ibrahim.png", width=None)
     columnContainer.header("Mr. Ibrahim Ame")
 
-    columnContainer = col2.container(border = True)
+    columnContainer = col1.container(border = True)
     columnContainer.image("pages/images/default.png", width=None)
     columnContainer.header("Ms. Hadjer Benyamina")
 
