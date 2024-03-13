@@ -37,7 +37,16 @@ def predictWithImage(image):
     return predict_image(loaded_model, image_path_to_predict)
 
 
-st.image("air-logo.png", width = 300)
+c1, c2 = st.columns(2)
+c1.image("air-logo.png", width = 300)
+c2.image("desam.svg", width = 300)
+
+st.container(height=20, border=False)
+c1, c2 = st.columns(2)
+with c1.container(height=None, border=True):
+    st.page_link("pages/teammembers.py", label="See The Team Members - - →")
+st.container(height=30, border=False)
+
 st.title("Tick Insect Predictor")
 
 uploaded_file = st.file_uploader("Upload Image", type=["jpg", "png"], accept_multiple_files=False, on_change=None)
