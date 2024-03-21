@@ -63,3 +63,4 @@ test_ratio = 0.1
 
 # Call the function to split images into training, validation, and testing sets
 split_images_into_folders(data_directory, train_ratio, validation_ratio, test_ratio)
+

@@ -28,7 +28,7 @@ def predict_image(model, image_path):
 def predictWithImage(image):
 
     # Load the model
-    loaded_model = load_model('tickBugsModelV2.h5')
+    loaded_model = load_model('tickBugsModelV4.h5')
 
     # Path to the image you want to predict
     image_path_to_predict = image
