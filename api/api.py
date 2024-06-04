@@ -38,7 +38,7 @@ def get_results():
     model_name = request.args.get("modelFilename")
    
     size = 32
-    url = "http://127.0.0.1:8888/uploads" + image_name
+    url = "http://tickprediction.aiiot.website/uploads" + image_name
     
     response = requests.get(url)
     img = Image.open(BytesIO(response.content))
