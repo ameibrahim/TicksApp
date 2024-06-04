@@ -1,25 +1,26 @@
-import json
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import requests
+from io import BytesIO
 
 
-def preprocess_image(image_path, size):
-    img = image.load_img(image_path, target_size=(size, size))
+def preprocess_image(_image, size):
+    img = _image.resize((size,size), Image.Resampling.LANCZOS)
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     img_array /= 255.0
     return img_array
 
-def predictWithImage(img, model_name, size):
+def predictWithImage(_image, model_name, size):
     loaded_model = load_model(model_name)
-    return predict_image(loaded_model, img, size)
+    return predict_image(loaded_model, _image, size)
 
-def predict_image(model, image_path, size):
-    preprocessed_image = preprocess_image(image_path, size)
+def predict_image(model, _image, size):
+    preprocessed_image = preprocess_image(_image, size)
     prediction = model.predict(preprocessed_image)
     class_index = np.argmax(prediction)
     class_labels = ['Hyalomma', 'Rhipicephalus', "Unidentified"]
@@ -37,10 +38,14 @@ def get_results():
     model_name = request.args.get("modelFilename")
    
     size = 32
-    image_name = "../../TicksApp/uploads/" + image_name
+    url = "http://127.0.0.1:8888/uploads" + image_name
+    
+    response = requests.get(url)
+    img = Image.open(BytesIO(response.content))
+
     model_name = "../models/" + model_name
 
-    result = predictWithImage(image_name, model_name, size)
+    result = predictWithImage(img, model_name, size)
 
     results = {
         "classification": result,
@@ -51,4 +56,4 @@ def get_results():
     return response
 
 if __name__ == "__main__":
-   application.run(host="127.0.0.1", port=5002)
+   application.run()
