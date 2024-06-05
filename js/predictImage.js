@@ -28,10 +28,10 @@ async function startPrediction(){
     const hasImageBeenSelected = globalCache.get("hasImageBeenSelected");
     // const { modelID, modelFilename, modelInputFeatureSize } = globalCache.get("chosenModelDetails");
     
-    const { modelID, modelFilename, modelInputFeatureSize } = {
-        modelID: "fd9f935nd",
-        modelFilename: "VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras",
-        modelInputFeatureSize: "32"
+    const { id: modelID, filename: modelFilename, inputFeatureSize: modelInputFeatureSize } = {
+        id: "fd9f935nd",
+        filename: "VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras",
+        inputFeatureSize: "32"
     };
 
     if (!hasImageBeenSelected) {
@@ -44,8 +44,8 @@ async function startPrediction(){
 
         //TODO: Uploading Images Doesn't Work ??? On Chrome Dev
         let fileUploadResult = await uploadFile(selectedImage);
-        let imageName = fileUploadResult.newFileName
-        
+        let { newFileName: imageName, fileSize }  = fileUploadResult
+
         let data = {
             imageName,
             modelFilename,
@@ -64,7 +64,8 @@ async function startPrediction(){
             date: getCurrentTimeInJSONFormat(),
             modelID,
             result: tickPredictionResult,
-            imageName
+            imageName,
+            fileSize
         }
 
         let params = createParamatersFrom(parameters);

@@ -47,7 +47,7 @@ function AJAXCall(callObject){
                 let result = type == "fetch" ? 
                 JSON.parse(this.responseText) : this.responseText ;
 
-                // console.log("look: ", result);
+                console.log("look: ", result);
 
                 //TODO: Take a look one more time
                 if(result.length < 1 && type != "fetch") reject(rejectMessage || "SQLError");
@@ -98,7 +98,8 @@ async function uploadFile(file, progressElement = null, scriptPath = "../include
 
                 resolve({
                     oldFileName: file.name,
-                    newFileName: this.responseText
+                    newFileName: this.responseText,
+                    fileSize: file.size / 1_000_000 + "MB"
                 });
             }
             else{
@@ -250,3 +251,4 @@ function createParamatersFrom(data){
     return params
 
 }
+

@@ -34,28 +34,28 @@
                 <div class="stretch-container">
                     <div class="simple-grid">
                         <p class="subheading">Predicted Class</p>
-                        <p class="stand-out">Rhipicephalus</p>
+                        <p class="stand-out" id="predicted-class-placeholder">Rhipicephalus</p>
                     </div>
                 </div>
 
                 <div class="stretch-container">
                     <div class="simple-grid">
                         <p class="subheading">Predicted Date</p>
-                        <p class="stand-out">24/05/2024</p>
+                        <p class="stand-out" id="predicted-date-placeholder">24/05/2024</p>
                     </div>
                 </div>
 
                 <div class="stretch-container">
                     <div class="simple-grid">
                         <p class="subheading">Model Used</p>
-                        <p class="stand-out">VGG16-A005-ACCU86-23-06-2-24.keras</p>
+                        <p class="stand-out" id="predicted-model-used">VGG16-A005-ACCU86-23-06-2-24.keras</p>
                     </div>
                 </div>
 
                 <div class="stretch-container">
                     <div class="simple-grid">
                         <p class="subheading">Model Accuracy</p>
-                        <p class="stand-out">86%</p>
+                        <p class="stand-out" id="predicted-model-accuracy">..%</p>
                     </div>
                 </div>
 

@@ -30,6 +30,7 @@
     -- date
     -- modelID
     -- result
+    -- filesize
 
 -- model settings
 

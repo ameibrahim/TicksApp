@@ -87,30 +87,17 @@
 
         async function getPastPredictions(){
 
-            return new Promise((resolve, reject) => {
-                resolve([
-                {
-                    imageName: "hyalomma-2206.jpg",
-                    filesize: "3MB",
-                    result: "Hyalomma"
-                },
-                {
-                    imageName: "rhipicephalus-20.jpg",
-                    filesize: "4.5MB",
-                    result: "Rhipicephalus"
-                },
-                {
-                    imageName: "unidentified-79.jpg",
-                    filesize: "2.9MB",
-                    result: "Unidentified"
-                },
-                {
-                    imageName: "unidentified-79.jpg",
-                    filesize: "2.9MB",
-                    result: "Unidentified"
-                },
-                ])
-            })
+            globalCache.put("userID", "3333434")
+            
+            let userID = globalCache.get('userID');
+            console.log("userID: ", userID);
+
+           return await AJAXCall({
+            type: "fetch",
+            phpFilePath: "../include/getPersonalPredictions.php",
+            rejectMessage: "Getting Past Predictions Failed",
+            params: `userID=3333434`
+           })
 
         }
 
@@ -129,6 +116,9 @@
             // pastPredictionsContainer.innerHTML += renderEmptyLoader()
 
             let data = await getPastPredictions();
+
+            console.log("data: ", data);
+
             pastPredictionsContainer.innerHTML = "";
             
             setTimeout(() => {
@@ -213,7 +203,21 @@
             predictionReviewLoader.style.display = "grid";
             imageReviewView.style.display = "none";
 
+            let { dateTrained, filename, accuracy, result } = data;
+
+            console.log("preview Pop up data: ", data);
+
             openPopup(".prediction-view-overlay");
+
+            let predictedClassPlaceholder = overlay.querySelector("#predicted-class-placeholder");
+            let predictedDatePlaceholder = overlay.querySelector("#predicted-date-placeholder");
+            let predictedModelPlaceholder = overlay.querySelector("#predicted-model-used");
+            let predictedModelAccuracy = overlay.querySelector("#predicted-model-accuracy");
+
+            predictedClassPlaceholder.textContent = result;
+            predictedDatePlaceholder.textContent = dateTrained.split("T")[0];
+            predictedModelPlaceholder.textContent = filename;
+            predictedModelAccuracy.textContent = accuracy + "%";
 
             setTimeout(() => {
                 predictionReviewLoader.style.display = "none";
