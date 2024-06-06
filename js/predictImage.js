@@ -27,12 +27,14 @@ async function startPrediction(){
     const selectedImage = globalCache.get("selectedImageForPrediction");
     const hasImageBeenSelected = globalCache.get("hasImageBeenSelected");
     // const { modelID, modelFilename, modelInputFeatureSize } = globalCache.get("chosenModelDetails");
-    
-    const { id: modelID, filename: modelFilename, inputFeatureSize: modelInputFeatureSize } = {
+    const detailsFromModel = {
         id: "fd9f935nd",
         filename: "VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras",
+        accuracy: "99.8%",
         inputFeatureSize: "32"
     };
+
+    const { id: modelID, filename: modelFilename, inputFeatureSize: modelInputFeatureSize } = detailsFromModel;
 
     if (!hasImageBeenSelected) {
         //TODO:  showSelectImageToast();
@@ -77,7 +79,7 @@ async function startPrediction(){
         closePopup(".overlay.prediction-overlay");
 
         await renderPastPredictions();
-        await handlePredictionReview(parameters);
+        await handlePredictionReview({ ...parameters, ...detailsFromModel });
 
     }catch(error){
         console.log(error);
