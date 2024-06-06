@@ -54,13 +54,13 @@
 
                 <div class="model-accuracy-wrapper">
                     <div class="model-type">VGG16</div>
-                    <div class="model-name">VGG16-A005-ACCU86-23-06-2-24.keras</div>
-                    <div class="model-accuracy">86%</div>
+                    <div class="model-name">VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras</div>
+                    <div class="model-accuracy">99.8%</div>
                 </div>
 
-                <div class="model-accuracy-wrapper">
+                <!-- <div class="model-accuracy-wrapper">
                     <div class="model-type">CNN</div>
-                    <div class="model-name">CNN-A003-ACCU76-23-06-2-24.keras</div>
+                    <div class="model-name">CNN-VARA01a-32x32-EP15-ACCU99-05-06-2024.keras</div>
                     <div class="model-accuracy">76%</div>
                 </div>
 
@@ -68,7 +68,7 @@
                     <div class="model-type">RESNET</div>
                     <div class="model-name">RESNET-B053-ACCU96-23-06-2-24.keras</div>
                     <div class="model-accuracy">96%</div>
-                </div>
+                </div> -->
             </div>
         
         </div>
@@ -203,7 +203,7 @@
             predictionReviewLoader.style.display = "grid";
             imageReviewView.style.display = "none";
 
-            let { dateTrained, filename, accuracy, result } = data;
+            let { date: dateTrained, filename, accuracy, result } = data;
 
             console.log("preview Pop up data: ", data);
 
