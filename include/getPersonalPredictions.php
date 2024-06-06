@@ -18,6 +18,7 @@
             SELECT predictions.fileSize, predictions.imageName, predictions.result, predictions.date, models.filename, models.accuracy FROM `predictions`
             INNER JOIN models ON models.id = predictions.modelID
             WHERE userID = '$userID'
+            ORDER BY predictions.date DESC
             LIMIT 4
         ";
 
