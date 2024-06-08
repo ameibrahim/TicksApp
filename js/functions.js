@@ -99,7 +99,7 @@ async function uploadFile(file, progressElement = null, scriptPath = "../include
                 resolve({
                     oldFileName: file.name,
                     newFileName: this.responseText,
-                    fileSize: file.size / 1_000_000 + "MB"
+                    fileSize: Math.ceil(file.size / 1_000_000 * 100) / 100 + "MB"
                 });
             }
             else{

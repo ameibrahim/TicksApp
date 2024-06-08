@@ -45,7 +45,7 @@
                 <h2>Model Accuracies</h2>
 
                 <div class="arrow-link">
-                    <a href="pastpredictions.php">View All Available Models</a>
+                    <a href="models.php">View All Available Models</a>
                     <p>→</p>
                 </div>
             </div>
