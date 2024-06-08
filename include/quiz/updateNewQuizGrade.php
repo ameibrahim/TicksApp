@@ -5,14 +5,6 @@
     $conn = OpenConnection();
 
 
-    // id,
-    // userID,	
-    // quizID,	
-    // filename,
-    // TODO: timeStarted: ,	
-    // TODO: timeEnded: ,	
-    // status
-
     $id = $_POST['id'];
     $userID = $_POST['userID'];
     $quizID = $_POST['quizID'];

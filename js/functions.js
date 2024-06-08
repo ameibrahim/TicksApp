@@ -252,3 +252,7 @@ function createParamatersFrom(data){
 
 }
 
+function handlePredictContainerView(){
+    openPopup('.prediction-overlay'); 
+    resetPredictionOverlay();
+}

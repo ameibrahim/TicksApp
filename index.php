@@ -30,7 +30,7 @@
                 <h2>Recent Predictions</h2>
 
                 <div class="arrow-link">
-                    <a href="pastpredictions.html">View All Predictions</a>
+                    <a href="pastpredictions.php">View All Predictions</a>
                     <p>→</p>
                 </div>
             </div>
@@ -45,30 +45,12 @@
                 <h2>Model Accuracies</h2>
 
                 <div class="arrow-link">
-                    <a href="pastpredictions.html">View All Available Models</a>
+                    <a href="pastpredictions.php">View All Available Models</a>
                     <p>→</p>
                 </div>
             </div>
 
             <div class="model-accuracies-container">
-
-                <div class="model-accuracy-wrapper">
-                    <div class="model-type">VGG16</div>
-                    <div class="model-name">VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras</div>
-                    <div class="model-accuracy">99.8%</div>
-                </div>
-
-                <!-- <div class="model-accuracy-wrapper">
-                    <div class="model-type">CNN</div>
-                    <div class="model-name">CNN-VARA01a-32x32-EP15-ACCU99-05-06-2024.keras</div>
-                    <div class="model-accuracy">76%</div>
-                </div>
-
-                <div class="model-accuracy-wrapper">
-                    <div class="model-type">RESNET</div>
-                    <div class="model-name">RESNET-B053-ACCU96-23-06-2-24.keras</div>
-                    <div class="model-accuracy">96%</div>
-                </div> -->
             </div>
         
         </div>
@@ -78,16 +60,32 @@
 
     <script>
 
+        renderModelAccuracies();
         renderPastPredictions();
 
-        function handlePredictContainerView(){
-            openPopup('.prediction-overlay'); 
-            resetPredictionOverlay();
+        async function renderModelAccuracies(){
+
+            let models = await getTopModelAccuracies();
+            const modelAccuracyContainer = document.querySelector(".model-accuracies-container");
+
+            models.forEach( model => {
+                let row = renderModelAccuracyRow(model);
+                modelAccuracyContainer.appendChild(row);
+            })
+
+        }
+
+        async function getTopModelAccuracies(){
+            return await AJAXCall({
+                type: "fetch",
+                phpFilePath: "../include/getTopModelAccuracies.php",
+                rejectMessage: "Getting Models Failed",
+           })
         }
 
         async function getPastPredictions(){
 
-            globalCache.put("userID", "3333434")
+            globalCache.put("userID", "3333434") //TODO: Fix
             
             let userID = globalCache.get('userID');
             console.log("userID: ", userID);
@@ -130,42 +128,6 @@
 
         }
 
-        function renderPredictionElementContainer(data){
-
-            const predictionElementContainer = document.createElement("div");
-            predictionElementContainer.className = "prediction-element-container";
-
-            const innerImage = document.createElement("img");
-            innerImage.src = "uploads/" + data.imageName;
-
-            const predictionsDescriptions = document.createElement("div");
-            predictionsDescriptions.className = "prediction-descriptions";
-
-            const descriptionName = document.createElement("div");
-            descriptionName.className = "decription-name";
-            descriptionName.textContent = data.imageName;
-
-            const fileSize = document.createElement("div");
-            fileSize.className = "filesize";
-            fileSize.textContent = data.filesize;
-
-            const predictedClass = document.createElement("div");
-            predictedClass.className = "predicted";
-            predictedClass.textContent = data.result;
-
-            predictionsDescriptions.append(descriptionName)
-            predictionsDescriptions.append(fileSize)
-            predictionsDescriptions.append(predictedClass)
-
-            predictionElementContainer.append(innerImage);
-            predictionElementContainer.append(predictionsDescriptions);
-
-            predictionElementContainer.addEventListener("click", () => handlePredictionReview(data))
-
-            return predictionElementContainer;
-
-        }
-
         function renderEmptyLoader(){
 
             const predictionElementContainer = document.createElement("div");
@@ -194,37 +156,6 @@
             return predictionElementContainer;
 
             }
-
-        function handlePredictionReview(data){
-
-            const overlay = document.querySelector(".prediction-view-overlay");
-            const imageReviewView = overlay.querySelector(".image-review-view");
-            const predictionReviewLoader = overlay.querySelector(".prediction-review-loader");
-            predictionReviewLoader.style.display = "grid";
-            imageReviewView.style.display = "none";
-
-            let { date: dateTrained, filename, accuracy, result } = data;
-
-            console.log("preview Pop up data: ", data);
-
-            openPopup(".prediction-view-overlay");
-
-            let predictedClassPlaceholder = overlay.querySelector("#predicted-class-placeholder");
-            let predictedDatePlaceholder = overlay.querySelector("#predicted-date-placeholder");
-            let predictedModelPlaceholder = overlay.querySelector("#predicted-model-used");
-            let predictedModelAccuracy = overlay.querySelector("#predicted-model-accuracy");
-
-            predictedClassPlaceholder.textContent = result;
-            predictedDatePlaceholder.textContent = dateTrained.split("T")[0];
-            predictedModelPlaceholder.textContent = filename;
-            predictedModelAccuracy.textContent = accuracy + "%";
-
-            setTimeout(() => {
-                predictionReviewLoader.style.display = "none";
-                imageReviewView.src = "uploads/" + data.imageName;
-                imageReviewView.style.display = "grid";
-            }, 2000)
-        }
 
     </script>
 

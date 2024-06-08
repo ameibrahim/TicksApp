@@ -4,45 +4,45 @@
         <img src="assets/logos/neu-logo.png" alt="">
     </div>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="index.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/grid.svg" alt="">
         </div>
         <div class="text">Dashboard</div>
-    </div>
+    </a>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="predict.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/aperture.svg" alt="">
         </div>
         <div class="text">Predict</div>
-    </div>
+    </a>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="pastpredictions.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/layers.svg" alt="">
         </div>
         <div class="text">Past Predictions</div>
-    </div>
+    </a>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="models.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/codesandbox.svg" alt="">
         </div>
         <div class="text">Models</div>
-    </div>
+    </a>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="knowledgebase.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/book-open.svg" alt="">
         </div>
         <div class="text">Knowledgebase</div>
-    </div>
+    </a>
 
-    <div class="navigation-item">
+    <a class="navigation-item" href="collaborators.php">
         <div class="image">
-            <img src="assets/icons/plus.png" alt="">
+            <img src="assets/icons/users.svg" alt="">
         </div>
         <div class="text">Collaborators</div>
-    </div>
+    </a>
 </div>

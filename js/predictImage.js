@@ -54,7 +54,7 @@ async function startPrediction(){
             modelInputFeatureSize,
         }
         
-        //TODO: detectPredictImage
+        //TODO: detectPredictImage 
 
         // var jsonString = JSON.stringify(data);
         let tickPredictionResult = await getResultsForTick(createParamatersFrom(data));

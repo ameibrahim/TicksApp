@@ -1,7 +1,7 @@
 <?php
     function cachebust($file_url = false) {
         if (!file_exists($file_url)) {
-            return '10';
+            return '8';
         }
 
         return filemtime($file_url);
