@@ -259,5 +259,7 @@ function handlePredictContainerView(){
 
 function getDomain(){
     let currentURL = new URL(window.location.href);
+    if(currentURL.port.length > 0)
+        return `${currentURL.hostname}:${currentURL.port}`;
     return currentURL.hostname;
 }

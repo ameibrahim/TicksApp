@@ -49,6 +49,7 @@ async function startPrediction(){
         let { newFileName: imageName, fileSize }  = fileUploadResult;
 
         let domain = getDomain();
+        console.log(domain);
 
         let data = {
             imageName,
@@ -89,10 +90,17 @@ async function startPrediction(){
     }
 }
 
+function isProjectRunningLocally(){
+    let currentURL = new URL(window.location.href);
+    return currentURL.hostname = "localhost" ? true : false;
+}
+
 function getResultsForTick(params) {
 
     return new Promise( async (resolve, reject) => {
-        let url = `http://165.22.182.47:5000/predict/?${params}`
+
+        let hostname = isProjectRunningLocally() ? "127.0.0.1:5000" : "165.22.182.47:5000";
+        let url = `http://${hostname}/predict/?${params}`
 
         // http://165.22.182.47:8033/predict/?imageName=1717389419.jpg&&modelFilename=VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras&&modelInputFeatureSize=32
 

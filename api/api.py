@@ -9,6 +9,7 @@ from io import BytesIO
 
 
 def preprocess_image(_image, size):
+    _image = _image.convert("RGB")
     img = _image.resize((size,size), Image.Resampling.LANCZOS)
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
@@ -21,6 +22,7 @@ def predictWithImage(_image, model_name, size):
 
 def predict_image(model, _image, size):
     preprocessed_image = preprocess_image(_image, size)
+    print(preprocessed_image.shape)
     prediction = model.predict(preprocessed_image)
     class_index = np.argmax(prediction)
     class_labels = ['Hyalomma', 'Rhipicephalus', "Unidentified"]
@@ -37,8 +39,13 @@ def get_results():
     size = request.args.get("modelInputFeatureSize")
     model_name = request.args.get("modelFilename")
     domain = request.args.get("domain")
+
+    print(domain)
    
-    size = int(size)
+    size = 32
+
+    print("size: ", size)
+
     url = f"http://{domain}/uploads/" + image_name
     
     response = requests.get(url)
