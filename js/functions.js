@@ -256,3 +256,8 @@ function handlePredictContainerView(){
     openPopup('.prediction-overlay'); 
     resetPredictionOverlay();
 }
+
+function getDomain(){
+    let currentURL = new URL(window.location.href);
+    return currentURL.hostname;
+}

@@ -135,3 +135,69 @@
     width: 10px;
     transition: 0.3s all;
 }
+
+
+/* PREDICTION MODEL SELECTOR */
+
+.model-type-container .popup-body{
+    padding: 2em;
+}
+
+.model-choice-container h4 {
+    font-weight: 600;
+}
+
+.model-choice-container{
+    display: grid;
+    grid-gap: 20px;
+}
+
+.inner-model-container-list {
+    display: grid;
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.model-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 20px;
+    padding: 13px;
+    color: var(--accent);
+    align-items: center;
+    border-bottom: 1px solid var(--accent);
+    transition: 0.3s all;
+}.model-row.selected{
+    grid-template-columns: 1fr auto auto;
+}.model-row:last-child{ border-bottom: none; }
+
+.model-row.selected, .model-row:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.model-row:not(.selected) { cursor: pointer; }
+
+.model-ticked {
+    height: 22px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: white;
+    display: none;
+    place-items: center;
+}
+
+.model-row.selected .model-ticked {
+    display: grid;
+}
+
+.model-ticked img {
+    height: 11px;
+    filter: invert(100%) invert(14%) sepia(11%) saturate(4141%) hue-rotate(220deg) brightness(84%) contrast(91%);
+}
+
+.prediction-models-body {
+    max-height: 500px;
+    overflow: scroll;
+}

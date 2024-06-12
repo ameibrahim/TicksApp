@@ -36,9 +36,10 @@ def get_results():
     image_name = request.args.get("imageName")
     size = request.args.get("modelInputFeatureSize")
     model_name = request.args.get("modelFilename")
+    domain = request.args.get("domain")
    
-    size = 32
-    url = "http://tickprediction.aiiot.website/uploads/" + image_name
+    size = int(size)
+    url = f"http://{domain}/uploads/" + image_name
     
     response = requests.get(url)
     img = Image.open(BytesIO(response.content))

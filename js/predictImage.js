@@ -46,12 +46,15 @@ async function startPrediction(){
 
         //TODO: Uploading Images Doesn't Work ??? On Chrome Dev
         let fileUploadResult = await uploadFile(selectedImage);
-        let { newFileName: imageName, fileSize }  = fileUploadResult
+        let { newFileName: imageName, fileSize }  = fileUploadResult;
+
+        let domain = getDomain();
 
         let data = {
             imageName,
             modelFilename,
             modelInputFeatureSize,
+            domain,
         }
         
         //TODO: detectPredictImage 
