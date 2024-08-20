@@ -75,7 +75,7 @@ async function startPrediction(){
         closePopup(".overlay.prediction-overlay");
 
         await renderPastPredictions();
-        await handlePredictionReview({ ...parameters, ...detailsFromModel });
+        await handlePredictionReview({ ...parameters, ...getCurrentModel() });
 
     }catch(error){
         console.log(error);
