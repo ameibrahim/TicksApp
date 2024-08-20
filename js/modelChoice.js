@@ -1,7 +1,7 @@
 // will be in a different file.
 let currentChosenModel = {
     id: "fd9f935nd",
-    filename: "VGG16_VARA00z_128x128_EP30_ACCU99.56_24-06-2024.keras",
+    filename: "VGG16_VARA00z_128x128_EP30_ACCU99_56_24-06-2024.keras",
     featureInputSize: "128"
 }; // get from database settings
 
