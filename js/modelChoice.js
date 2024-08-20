@@ -153,10 +153,9 @@ function createModelRow(rowData){
         uncheckAllModels();
         modelRow.className = "model-row selected";
         modelRow.appendChild(modelTicked);
-        currentChosenModel.id = rowData.id;
+        currentChosenModel = { ...rowData };
         console.log("current model id: ", currentChosenModel.id);
         console.log("original model id: ", originalChosenModel.id);
-
         checkConfirmButton();
 
     })
