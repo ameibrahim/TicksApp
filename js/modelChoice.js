@@ -105,11 +105,12 @@ function groupModelsBy(data, key){
 
 function confirmModelChanges(){
 
-    originalChosenModel = { ... currentChosenModel };
+    originalChosenModel = { ...currentChosenModel };
 
-    let tag = document.querySelector(".chosen-model-wrapper .tag");
+    let tag = document.querySelector("#chosenModelWrapperTag");
     tag.textContent = currentChosenModel.filename;
 
+    console.log(`Confirmed, ${currentChosenModel.filename}`);
     // set globalCache.
     // upload to database;
     checkConfirmButton()     
