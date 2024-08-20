@@ -41,9 +41,6 @@ def get_results():
     domain = request.args.get("domain")
 
     print(domain)
-   
-    size = 32
-
     print("size: ", size)
 
     url = f"http://{domain}/uploads/" + image_name

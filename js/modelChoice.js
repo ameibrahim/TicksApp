@@ -1,17 +1,15 @@
 // will be in a different file.
 let currentChosenModel = {
-    accuracy: "99.8",
-    dateTrained: "02/06/2024",
-    featureInputSize: "32",
-    filename: "VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras",
-    filesize: "403.4MB",
     id: "fd9f935nd",
-    metrics: null,
-    name: "VARA01b",
-    type: "VGG16",
+    filename: "VGG16_VARA00z_128x128_EP30_ACCU99.56_24-06-2024.keras",
+    featureInputSize: "128"
 }; // get from database settings
 
-let originalChosenModel = currentChosenModel;
+function getCurrentModel(){
+    return currentChosenModel;
+}
+
+let originalChosenModel = { ... currentChosenModel };
 
 const predictionModelsBody = document.querySelector(".prediction-models-body");
 
@@ -107,7 +105,7 @@ function groupModelsBy(data, key){
 
 function confirmModelChanges(){
 
-    originalChosenModel = currentChosenModel;
+    originalChosenModel = { ... currentChosenModel };
 
     let tag = document.querySelector(".chosen-model-wrapper .tag");
     tag.textContent = currentChosenModel.filename;
@@ -156,6 +154,7 @@ function createModelRow(rowData){
         modelRow.appendChild(modelTicked);
         currentChosenModel.id = rowData.id;
         console.log("current model id: ", currentChosenModel.id);
+        console.log("original model id: ", originalChosenModel.id);
 
         checkConfirmButton();
 

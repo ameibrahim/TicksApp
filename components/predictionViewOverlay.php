@@ -48,7 +48,7 @@
                 <div class="stretch-container">
                     <div class="simple-grid">
                         <p class="subheading">Model Used</p>
-                        <p class="stand-out" id="predicted-model-used">VGG16-A005-ACCU86-23-06-2-24.keras</p>
+                        <p class="stand-out" id="predicted-model-used">VGG16_VARA00z_128x128_EP30_ACCU99.56_24-06-2024.keras</p>
                     </div>
                 </div>
 
