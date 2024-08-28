@@ -2,4 +2,5 @@ api/*keras
 uploads/
 *keras
 .venv/
-api/*.pem
+api/cert.pem
+api/key.pem
