@@ -63,4 +63,5 @@ def get_results():
     return response
 
 if __name__ == "__main__":
-   application.run(ssl_context='adhoc')
+   context = ('../../server.crt', '../../server.key')#certificate and key files
+   application.run(debug=True, ssl_context=context)
