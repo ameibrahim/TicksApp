@@ -63,4 +63,4 @@ def get_results():
     return response
 
 if __name__ == "__main__":
-   application.run()
+   application.run(ssl_context='adhoc')
