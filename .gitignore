@@ -2,3 +2,4 @@ api/*keras
 uploads/
 *keras
 .venv/
+api/*.pem
