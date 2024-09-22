@@ -47,7 +47,7 @@ async def get_results(imageName: str, modelInputFeatureSize: int, modelFilename:
         model_path = f"../models/{modelFilename}"
         loaded_model = load_model(model_path)
 
-        url = f"http://{domain}/uploads/{imageName}"
+        url = f"https://{domain}/uploads/{imageName}"
         response = requests.get(url)
         response.raise_for_status()  # Raise an error for bad responses
         img = Image.open(BytesIO(response.content))

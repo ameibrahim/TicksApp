@@ -93,7 +93,7 @@ function getResultsForTick(params) {
 
         let hostname = isProjectRunningLocally() ? "127.0.0.1:8000" : "165.22.182.47:8000";
         console.log("hostname: " , hostname);
-        let url = `http://${hostname}/predict/?${params}`
+        let url = `https://${hostname}/predict/?${params}`
 
         // http://165.22.182.47:8033/predict/?imageName=1717389419.jpg&&modelFilename=VGG16-VARA01b-32x32-EP15-ACCU99-02-06-2024.keras&&modelInputFeatureSize=32
 
