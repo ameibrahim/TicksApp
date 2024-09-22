@@ -91,7 +91,7 @@ function getResultsForTick(params) {
 
     return new Promise( async (resolve, reject) => {
 
-        let hostname = isProjectRunningLocally() ? "127.0.0.1:8000" : "165.22.182.47:8000";
+        let hostname = isProjectRunningLocally() ? "127.0.0.1:8000" : "tickapi.aiiot.live";
         console.log("hostname: " , hostname);
         let url = `https://${hostname}/predict/?${params}`
 
